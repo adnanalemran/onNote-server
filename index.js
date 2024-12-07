@@ -17,7 +17,7 @@ app.use(express.json());
 
 // MongoDB connection string
 const mongoURI =
-  "mongodb+srv://adnan:adnan@cluster0.fhwdeyh.mongodb.net/noteApp?retryWrites=true&w=majority";
+  "mongodb+srv://ontext:ontext@cluster0.fhwdeyh.mongodb.net/noteApp?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongoURI)
@@ -84,13 +84,13 @@ app.get("/note/:title", async (req, res) => {
   }
 });
 
-app.get('/notes', async (req, res) => {
-    try {
-        const notes = await Note.find(); // Assuming you have a Note model
-        res.json(notes);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching notes' });
-    }
+app.get("/notes", async (req, res) => {
+  try {
+    const notes = await Note.find(); // Assuming you have a Note model
+    res.json(notes);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching notes" });
+  }
 });
 // Start the server
 const PORT = process.env.PORT || 5000;
